@@ -17,7 +17,11 @@
  */
 
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
-    
+    ListNode *sumListNode;
+    while (l1 || l2) {
+        int temp = 0;
+        
+    }
 }
 
 int main(int argc, const char * argv[]) {
