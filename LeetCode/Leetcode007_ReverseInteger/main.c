@@ -30,6 +30,10 @@
 
 #include <stdio.h>
 
+int reverse(int x){
+    
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");

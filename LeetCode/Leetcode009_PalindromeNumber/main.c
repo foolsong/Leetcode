@@ -32,6 +32,10 @@
 
 #include <stdio.h>
 
+bool isPalindrome(int x){
+    
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");

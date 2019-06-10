@@ -58,6 +58,10 @@
 
 #include <stdio.h>
 
+bool isMatch(char * s, char * p){
+    
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");

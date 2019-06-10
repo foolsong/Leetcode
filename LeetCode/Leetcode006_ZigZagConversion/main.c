@@ -40,6 +40,10 @@
 
 #include <stdio.h>
 
+char * convert(char * s, int numRows){
+    
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");

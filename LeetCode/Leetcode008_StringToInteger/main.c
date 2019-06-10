@@ -56,6 +56,11 @@
 
 #include <stdio.h>
 
+
+int myAtoi(char * str){
+    
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
