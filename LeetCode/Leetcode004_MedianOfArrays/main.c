@@ -30,125 +30,27 @@
 #include <stdio.h>
 
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
-    int numCount = 0;
-    int listSize = (nums1Size + nums2Size);
-    if ((nums1Size + nums2Size) % 2 == 1) {
-        numCount = 1;
-    } else {
-        numCount = 2;
-    }
+    int* longNumList;
+    int* shortNumList;
+
+    int shortNumListSize = 0;
+    int longNumListSize = 0;
     
-    int* longNum;
-    int* shortNum;
-    int longIndex = 0;
-    int shortIndex = 0;
-    int shortSize = 0;
-    int longSize = 0;
     if (nums1Size > nums2Size) {
-        longIndex = (int)((nums1Size - 1) * 0.5);
-        shortIndex = (int)((nums2Size - 1) * 0.5);
+        longNumList = nums1;
+        shortNumList = nums2;
         
-        longNum = nums1 + longIndex;
-        shortNum =  nums2 + shortIndex;
-        
-        shortSize = nums2Size;
-        longSize = nums1Size;
+        shortNumListSize = nums2Size;
+        longNumListSize = nums1Size;
     } else {
-        longIndex = (int)((nums2Size - 1) * 0.5);
-        shortIndex = (int)((nums1Size - 1) * 0.5);
+        longNumList = nums2;
+        shortNumList = nums1;
         
-        longNum = nums2 +longIndex;
-        shortNum = nums1 + shortIndex;
-        
-        shortSize = nums1Size;
-        longSize = nums2Size;
+        shortNumListSize = nums1Size;
+        longNumListSize = nums2Size;
     }
     
-    if (shortSize < 1) {
-        if (longSize % 2 == 1) {
-            return *longNum;
-        } else {
-            return (*longNum + *(longNum + 1)) * 0.5;
-        }
-    }
     
-    if (*longNum < *shortNum) {
-        while (*longNum <= *shortNum && shortIndex > 0) {
-            shortNum--;
-            shortIndex--;
-        }
-        
-        while (longIndex + 1 < longSize && *(longNum + 1) < *shortNum) {
-            longNum++;
-            longIndex++;
-        }
-        
-        int goalIndex = (int)(listSize + 1) * 0.5 ;
-        while (goalIndex != (shortIndex + longIndex + 2)) {
-            if (*longNum > *shortNum && shortIndex + 1 < shortSize) {
-                shortIndex++;
-                shortNum++;
-            } else if ( longIndex + 1 < longSize){
-                longIndex++;
-                longNum++;
-            }
-        }
-           
-        
-    } else {
-        while (*longNum >= *shortNum && (shortIndex + 1) < shortSize) {
-            shortNum++;
-            shortIndex++;
-        }
-        
-        while (longIndex > 0 && *(longNum - 1) > *shortNum) {
-            longNum--;
-            longIndex--;
-        }
-        
-        int goalIndex = (int)(listSize + 1) * 0.5 ;
-        while (goalIndex != (shortIndex + longIndex + 2)) {
-            if (*longNum > *shortNum && longIndex > 0) {
-                longIndex--;
-                longNum--;
-                
-            } else if (shortIndex + 1 < shortSize){
-                shortIndex--;
-                shortNum--;
-            } else {
-                    if (numCount == 1) {
-                        return *shortNum ;
-                    } else {
-                        int goal = *shortNum;
-                        if (shortIndex + 1 < shortSize) {
-                            shortNum++;
-                            return (goal + (*longNum > *shortNum ? *shortNum : *longNum)) * 0.5;
-                        }
-                        return (goal + *longNum) * 0.5;
-                    }
-            }
-        }
-        
-    }
-    
-    if (numCount == 1) {
-        return *longNum > *shortNum ? *longNum : *shortNum;
-    } else {
-        int goal;
-        if (*longNum > *shortNum) {
-            goal = *longNum ;
-        } else {
-            goal = *shortNum;
-        }
-        if (shortIndex + 1 < shortSize) {
-            shortNum++;
-        }
-        if (longIndex + 1 < longSize) {
-            longNum++;
-        }
-        
-        return (goal + (*longNum > *shortNum ? *longNum : *shortNum)) * 0.5;
-    }
     
     return 0;
 }
